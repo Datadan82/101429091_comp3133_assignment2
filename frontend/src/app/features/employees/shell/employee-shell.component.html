@@ -1,0 +1,41 @@
+<div class="shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <span class="material-icons">people_alt</span>
+      </div>
+      <span class="brand-label">EmpTrack</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a routerLink="/employees" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+        <span class="material-icons">dashboard</span>
+        <span>Dashboard</span>
+      </a>
+      <a routerLink="/employees/add" routerLinkActive="active" class="nav-item">
+        <span class="material-icons">person_add</span>
+        <span>Add Employee</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-chip" *ngIf="auth.getCurrentUser() as user">
+        <div class="user-avatar">{{ user.username[0].toUpperCase() }}</div>
+        <div class="user-info">
+          <span class="user-name">{{ user.username }}</span>
+          <span class="user-role">Admin</span>
+        </div>
+      </div>
+      <button mat-icon-button class="logout-btn" (click)="logout()" matTooltip="Sign out">
+        <span class="material-icons">logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,39 @@
+// Same layout as add — component styles fully isolated
+.form-page { padding: 32px; max-width: 900px; }
+.page-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+.back-btn { color: var(--text-secondary) !important; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.page-title { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+.page-sub { font-size: 13px; color: var(--text-muted); }
+.form-grid { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 28px; }
+.fields-area { display: flex; flex-direction: column; gap: 4px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.photo-card { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.photo-preview {
+  width: 160px; height: 160px; border-radius: 50%; overflow: hidden;
+  background: var(--bg-elevated); border: 2px dashed var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+.photo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); .material-icons { font-size: 36px; } p { font-size: 12px; } }
+.upload-label {
+  display: flex; align-items: center; gap: 6px; padding: 8px 16px;
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s;
+  .material-icons { font-size: 16px; }
+  &:hover { border-color: var(--accent); color: var(--accent-light); }
+}
+.file-input { display: none; }
+.form-actions { display: flex; justify-content: flex-end; gap: 12px; padding-top: 8px; border-top: 1px solid var(--border); }
+.cancel-btn { border-color: var(--border) !important; color: var(--text-secondary) !important; border-radius: var(--radius-sm); height: 44px; }
+.submit-btn {
+  height: 44px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), #8b5cf6) !important; color: white !important;
+  font-weight: 600; display: flex; align-items: center; gap: 6px; padding: 0 24px;
+  span.material-icons { font-size: 18px; } &:disabled { opacity: 0.5; }
+}
+.loading-wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 64px; color: var(--text-secondary); font-size: 14px; }
+@media (max-width: 768px) {
+  .form-page { padding: 16px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+}

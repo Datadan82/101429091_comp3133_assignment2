@@ -1,0 +1,120 @@
+<div class="detail-page page-enter">
+  <!-- Loading -->
+  <div class="loading-wrapper" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Loading employee…</p>
+  </div>
+
+  <ng-container *ngIf="!loading && employee">
+    <!-- Header -->
+    <div class="page-header">
+      <button mat-icon-button class="back-btn" (click)="back()">
+        <span class="material-icons">arrow_back</span>
+      </button>
+      <div class="header-actions">
+        <button mat-stroked-button class="edit-btn" (click)="edit()">
+          <span class="material-icons">edit</span>
+          Edit
+        </button>
+        <button mat-stroked-button class="delete-btn" (click)="delete()">
+          <span class="material-icons">delete_outline</span>
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <!-- Profile card -->
+    <div class="profile-hero">
+      <div class="avatar-wrapper">
+        <img *ngIf="employee.employee_photo"
+             [src]="employee.employee_photo"
+             [alt]="employee.first_name"
+             class="avatar-img" />
+        <div class="avatar-initials" *ngIf="!employee.employee_photo">
+          {{ getInitials() }}
+        </div>
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name">{{ employee.first_name }} {{ employee.last_name }}</h1>
+        <p class="profile-title">{{ employee.designation }}</p>
+        <div class="profile-badges">
+          <span class="badge dept">{{ employee.department }}</span>
+          <span class="badge gender">{{ employee.gender }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details grid -->
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-icons">mail_outline</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Email Address</span>
+          <span class="detail-value">{{ employee.email }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon salary-icon">
+          <span class="material-icons">attach_money</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Annual Salary</span>
+          <span class="detail-value salary">{{ employee.salary | salary }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-icons">business</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Department</span>
+          <span class="detail-value">{{ employee.department }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-icons">work_outline</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Designation</span>
+          <span class="detail-value">{{ employee.designation }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-icons">calendar_today</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Date of Joining</span>
+          <span class="detail-value">{{ employee.date_of_joining | date:'longDate' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-icons">person_outline</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Gender</span>
+          <span class="detail-value">{{ employee.gender }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-icons">badge</span>
+        </div>
+        <div class="detail-body">
+          <span class="detail-label">Employee ID</span>
+          <span class="detail-value mono">{{ employee._id }}</span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

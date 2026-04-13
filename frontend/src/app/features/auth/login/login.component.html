@@ -1,0 +1,57 @@
+<div class="auth-shell">
+  <!-- Background decoration -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div class="auth-card page-enter">
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">
+        <span class="material-icons">people_alt</span>
+      </div>
+      <h1 class="brand-name">EmpTrack</h1>
+      <p class="brand-sub">Employee Management System</p>
+    </div>
+
+    <h2 class="form-title">Welcome back</h2>
+    <p class="form-subtitle">Sign in to your workspace</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Username -->
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>Username</mat-label>
+        <mat-icon matPrefix>person_outline</mat-icon>
+        <input matInput formControlName="username" autocomplete="username" />
+        <mat-error *ngIf="username.hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="username.hasError('minlength')">At least 3 characters</mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>Password</mat-label>
+        <mat-icon matPrefix>lock_outline</mat-icon>
+        <input matInput formControlName="password"
+               [type]="hidePassword ? 'password' : 'text'"
+               autocomplete="current-password" />
+        <button mat-icon-button matSuffix type="button"
+                (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="password.hasError('minlength')">At least 6 characters</mat-error>
+      </mat-form-field>
+
+      <!-- Submit -->
+      <button mat-flat-button class="submit-btn" type="submit" [disabled]="loading">
+        <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+        <span *ngIf="!loading">Sign In</span>
+      </button>
+    </form>
+
+    <p class="switch-link">
+      Don't have an account?
+      <a routerLink="/signup">Create one</a>
+    </p>
+  </div>
+</div>
